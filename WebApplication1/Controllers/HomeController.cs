@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RestSharp;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -26,5 +28,17 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+        public ActionResult ReadNews()
+        {
+            var client = new RestClient();
+            var news = new News();
+
+            client.BaseUrl = new Uri("http://localhost:50412/crawlerapi/Crawler/ExtractNews");
+
+           
+            return View();
+        }
+
     }
 }
