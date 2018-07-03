@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using CrawlerService.Models;
@@ -13,13 +14,18 @@ namespace CrawlerService.Interfaces
         
     }
     
-    public class VxExpressParser : IVnExpressParser
+    public class VnExpressParser : IVnExpressParser
     {
         private readonly ICrawler _crawler;
-        public VxExpressParser(ICrawler crawler)
+        
+        public VnExpressParser(ICrawler crawler)
         {
             _crawler = crawler;
         }
+
+        //readonly ICrawler crawler = new Crawler();
+        
+
         public List<Menu> ExtractMenu(string url)
         {
             var html = _crawler.Extract(url);
@@ -75,7 +81,7 @@ namespace CrawlerService.Interfaces
                     Title = NewsItem.Descendants("h3")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Equals("title_news")).FirstOrDefault().InnerText.Trim('\r', '\n', '\t', ' '),
-
+                    
                     Description = NewsItem.Descendants("h4")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Equals("description")).First(x => x.Attributes["class"] != null

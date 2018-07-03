@@ -16,17 +16,16 @@ namespace CrawlerService.Interfaces
 
     public class Crawler : ICrawler
     {
-        public async void ExtractAsync(string url, string html)
+        public string ExtractAsync(string url)
         {
             var httpClient = new HttpClient();
-            html = await httpClient.GetStringAsync(url);
-            
+            var html =  httpClient.GetStringAsync(url);
+            return html.Result;
         }
 
-        string ICrawler.Extract(string url)
+        public string Extract(string url)
         {
-            string html = "";
-            ExtractAsync(url, html);
+            var html = ExtractAsync(url);
             return html;
         }
     }

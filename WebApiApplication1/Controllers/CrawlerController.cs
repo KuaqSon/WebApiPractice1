@@ -17,8 +17,8 @@ namespace WebApiApplication1.Controllers
         {
             _parser = parser;
         }
-        [HttpGet]
-        public IEnumerable<string> Select()
+        
+        public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
@@ -29,9 +29,11 @@ namespace WebApiApplication1.Controllers
             var url = "https://vnexpress.net/";
             return _parser.ExtractMenu(url);
         }
+        
         [HttpGet]
-        public IEnumerable<News> ExtractNews(string url)
+        public IEnumerable<News> ExtractNews()
         {
+            var url = "https://vnexpress.net/";
             return _parser.ExtractNews(url);
         }
     }

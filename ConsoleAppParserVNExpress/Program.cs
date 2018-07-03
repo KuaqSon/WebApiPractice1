@@ -12,8 +12,8 @@ namespace ConsoleAppParserVNExpress
     {
         static void Main(string[] args)
         {
-            //GetHtmlAsync();
             GetMenu();
+            //GetHtmlAsync();
             Console.ReadLine();
         }
 

@@ -24,6 +24,7 @@ namespace WebApiApplication1
                 routeTemplate: "crawlerapi/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
         }
     }
 }
